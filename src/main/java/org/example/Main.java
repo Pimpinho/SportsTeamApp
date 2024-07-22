@@ -1,17 +1,18 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import Model.PlayerModel;
+import Model.StatsPlayerModel;
+import Model.StatsModel;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        PlayerModel player = new PlayerModel(1, "Neymar", 32, "Brazilian", "ATA", 10, "Barcelona");
+        StatsPlayerModel statsPlayer = new StatsPlayerModel(1, 50, 30, 10, 60.0, 25, player,
+                20, 5, 1, 1000, 50, 30, 15, 10, "None");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        System.out.println(player);
+        // Criando um objeto StatsPlay
+        ss
     }
 }
+

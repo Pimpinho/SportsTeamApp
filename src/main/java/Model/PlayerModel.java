@@ -1,0 +1,79 @@
+package Model;
+
+public class PlayerModel {
+
+    private int id;
+    private String name;
+    private int age;
+    private String nationality;
+    private String position;
+    private int shirtNumber;
+    private String team;
+
+
+    public PlayerModel(int id, String name, int age, String nationality, String position, int shirtNumber, String team) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.nationality = nationality;
+        this.position = position;
+        this.shirtNumber = shirtNumber;
+        this.team = team;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public int getShirtNumber() {
+        return shirtNumber;
+    }
+
+    public void setShirtNumber(int shirtNumber) {
+        this.shirtNumber = shirtNumber;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+}
