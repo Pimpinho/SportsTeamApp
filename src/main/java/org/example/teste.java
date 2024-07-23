@@ -14,11 +14,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Player management:");
-            System.out.println("1. Adicionar Jogador");
-            System.out.println("2. Remover Jogador");
-            System.out.println("3. Editar Jogador");
-            System.out.println("4. Listar Jogadores");
+            System.out.println("Management functionalities:");
+            System.out.println("1. Players");
+            System.out.println("2. Team");
+            System.out.println("3. Statistics");
             System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -27,19 +26,19 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    addPlayer(scanner);
+                    playerMenu(scanner);
                     break;
                 case 2:
-                    removePlayer(scanner);
+                    //teamMenu(scanner);
                     break;
                 case 3:
-                    editPlayer(scanner);
+                    //editPlayer(scanner);
                     break;
                 case 4:
                     listPlayers();
                     break;
                 case 5:
-                    System.out.println("Saindo...");
+                    System.out.println("Exiting.");
                     scanner.close();
                     return;
                 default:
@@ -48,8 +47,12 @@ public class Main {
         }
     }
 
+    private  static void playerMenu(Scanner scanner){
+
+    }
+
     private static void addPlayer(Scanner scanner) {
-        System.out.print("Nome completo: ");
+        System.out.print("Nome: ");
         String name = scanner.nextLine();
         System.out.print("Idade: ");
         int age = scanner.nextInt();
