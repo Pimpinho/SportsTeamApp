@@ -5,11 +5,11 @@ public class TeamModel {
     private String name;
     private String coach;
     private String stadium;
-    private String teamStats;
+    private StatsTeamModel teamStats;
     private String[] playersTeam;
 
 
-    public TeamModel(int id, String name, String coach, String stadium, String teamStats, String[] playersTeam) {
+    public TeamModel(int id, String name, String coach, String stadium, StatsTeamModel teamStats, String[] playersTeam) {
         this.id = id;
         this.name = name;
         this.coach = coach;
@@ -62,11 +62,11 @@ public class TeamModel {
         this.stadium = stadium;
     }
 
-    public String getTeamStats() {
+    public StatsTeamModel getTeamStats() {
         return teamStats;
     }
 
-    public void setTeamStats(String teamStats) {
+    public void setTeamStats(StatsTeamModel teamStats) {
         this.teamStats = teamStats;
     }
 }
