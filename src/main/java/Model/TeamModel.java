@@ -6,16 +6,29 @@ public class TeamModel {
     private String coach;
     private String stadium;
     private String teamStats;
+    private String[] playersTeam;
 
 
-    public TeamModel(int id, String name, String coach, String stadium, String teamStats) {
+    public TeamModel(int id, String name, String coach, String stadium, String teamStats, String[] playersTeam) {
         this.id = id;
         this.name = name;
         this.coach = coach;
         this.stadium = stadium;
         this.teamStats = teamStats;
+        this.playersTeam = playersTeam;
     }
 
+    public TeamModel(String[] playersTeam) {
+        this.playersTeam = playersTeam;
+    }
+
+    public String[] getPlayersTeam() {
+        return playersTeam;
+    }
+
+    public void setPlayersTeam(String[] playersTeam) {
+        this.playersTeam = playersTeam;
+    }
 
     public int getId() {
         return id;
