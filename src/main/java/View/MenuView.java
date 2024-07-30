@@ -1,6 +1,7 @@
 package View;
 
 import Controller.MenuController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -377,4 +378,5 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     // End of variables declaration//GEN-END:variables
+
 }
