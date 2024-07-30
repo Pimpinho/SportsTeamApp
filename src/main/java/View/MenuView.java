@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
+
+import Controller.MenuController;
 
 /**
  *
@@ -10,11 +8,14 @@ package View;
  */
 public class MenuView extends javax.swing.JFrame {
 
+    private final MenuController controller;
+    
     /**
      * Creates new form MenuView
      */
     public MenuView() {
         initComponents();
+        controller = new MenuController();
     }
 
     /**
@@ -30,29 +31,36 @@ public class MenuView extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MyTeamMenu = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         TeamsMenu = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        AddPlayerMenuItem = new javax.swing.JMenuItem();
+        DelPlayerMenuItem = new javax.swing.JMenuItem();
+        EditPlayerMenuItem = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        TeamPerformanceMI = new javax.swing.JMenuItem();
+        PlayerMenu = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        MaCMenu = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        MaSMenu = new javax.swing.JMenu();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -61,9 +69,58 @@ public class MenuView extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
+        jLabel4.setFont(new java.awt.Font("JimThorpe", 0, 48)); // NOI18N
+        jLabel4.setText("My");
+
+        jLabel5.setFont(new java.awt.Font("JimThorpe", 0, 48)); // NOI18N
+        jLabel5.setText("Team");
+
+        jLabel6.setFont(new java.awt.Font("JimThorpe", 0, 48)); // NOI18N
+        jLabel6.setText("Management");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu principal");
+
+        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel7.setFont(new java.awt.Font("JimThorpe", 0, 48)); // NOI18N
+        jLabel7.setText("My");
+
+        jLabel8.setFont(new java.awt.Font("JimThorpe", 0, 48)); // NOI18N
+        jLabel8.setText("Team");
+
+        jLabel9.setFont(new java.awt.Font("JimThorpe", 0, 48)); // NOI18N
+        jLabel9.setText("Management");
+
+        jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8))
+                .addContainerGap(697, Short.MAX_VALUE))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(430, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9))
+        );
 
         MyTeamMenu.setText("My Team");
+        MyTeamMenu.setBorderPainted(false);
         MyTeamMenu.add(jMenuItem4);
 
         jMenuBar1.add(MyTeamMenu);
@@ -72,41 +129,51 @@ public class MenuView extends javax.swing.JFrame {
 
         jMenu1.setText("Management");
 
-        jMenuItem3.setText("Add");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        AddPlayerMenuItem.setText("Add");
+        AddPlayerMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                AddPlayerMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(AddPlayerMenuItem);
 
-        jMenuItem5.setText("Delete");
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem7.setText("Edit");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        DelPlayerMenuItem.setText("Delete");
+        DelPlayerMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                DelPlayerMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
+        jMenu1.add(DelPlayerMenuItem);
+
+        EditPlayerMenuItem.setText("Edit");
+        EditPlayerMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditPlayerMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(EditPlayerMenuItem);
 
         TeamsMenu.add(jMenu1);
 
         jMenuItem2.setText("List Teams");
-        TeamsMenu.add(jMenuItem2);
-
-        jMenuItem12.setText("Performance");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        TeamsMenu.add(jMenuItem12);
+        TeamsMenu.add(jMenuItem2);
+
+        TeamPerformanceMI.setText("Performance");
+        TeamPerformanceMI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TeamPerformanceMIActionPerformed(evt);
+            }
+        });
+        TeamsMenu.add(TeamPerformanceMI);
 
         jMenuBar1.add(TeamsMenu);
 
-        jMenu2.setText("Players");
+        PlayerMenu.setText("Players");
 
         jMenu5.setText("Management");
 
@@ -119,6 +186,11 @@ public class MenuView extends javax.swing.JFrame {
         jMenu5.add(jMenuItem8);
 
         jMenuItem9.setText("Delete");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem9);
 
         jMenuItem10.setText("Edit");
@@ -129,7 +201,7 @@ public class MenuView extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem10);
 
-        jMenu2.add(jMenu5);
+        PlayerMenu.add(jMenu5);
 
         jMenuItem6.setText("List Players");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -137,14 +209,19 @@ public class MenuView extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        PlayerMenu.add(jMenuItem6);
 
         jMenuItem11.setText("Performance");
-        jMenu2.add(jMenuItem11);
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        PlayerMenu.add(jMenuItem11);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(PlayerMenu);
 
-        jMenu4.setText("Matches and Championchips");
+        MaCMenu.setText("Matches and Championchips");
 
         jMenu7.setText("Scheduling");
 
@@ -154,15 +231,15 @@ public class MenuView extends javax.swing.JFrame {
         jMenuItem15.setText("Tournments");
         jMenu7.add(jMenuItem15);
 
-        jMenu4.add(jMenu7);
+        MaCMenu.add(jMenu7);
 
         jMenuItem16.setText("jMenuItem16");
-        jMenu4.add(jMenuItem16);
+        MaCMenu.add(jMenuItem16);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(MaCMenu);
 
-        jMenu6.setText("Metrics and Stats");
-        jMenuBar1.add(jMenu6);
+        MaSMenu.setText("Metrics and Stats");
+        jMenuBar1.add(MaSMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -170,39 +247,64 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void EditPlayerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPlayerMenuItemActionPerformed
+        //Edit Team  
+    }//GEN-LAST:event_EditPlayerMenuItemActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void AddPlayerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPlayerMenuItemActionPerformed
+       //Add Team
+       AddTeamView addTeamView = new AddTeamView();
+       jDesktopPane1.add(addTeamView);
+       addTeamView.setVisible(true);       
+    }//GEN-LAST:event_AddPlayerMenuItemActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
+        //Add Player
+        AddPlayerView addPlayerView = new AddPlayerView();
+        jDesktopPane1.add(addPlayerView);
+        addPlayerView.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
+        //Edit Player        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    private void TeamPerformanceMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeamPerformanceMIActionPerformed
+        //Team Performance
+    }//GEN-LAST:event_TeamPerformanceMIActionPerformed
+
+    private void DelPlayerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelPlayerMenuItemActionPerformed
+        //Delete Team     
+    }//GEN-LAST:event_DelPlayerMenuItemActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        //Delete Player       
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        //List Teams
+                
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        //Player Performance
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,29 +342,36 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddPlayerMenuItem;
+    private javax.swing.JMenuItem DelPlayerMenuItem;
+    private javax.swing.JMenuItem EditPlayerMenuItem;
+    private javax.swing.JMenu MaCMenu;
+    private javax.swing.JMenu MaSMenu;
     private javax.swing.JMenu MyTeamMenu;
+    private javax.swing.JMenu PlayerMenu;
+    private javax.swing.JMenuItem TeamPerformanceMI;
     private javax.swing.JMenu TeamsMenu;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
