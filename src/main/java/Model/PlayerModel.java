@@ -2,7 +2,7 @@ package Model;
 
 public class PlayerModel {
 
-    private int id;
+ 
     private String name;
     private int age;
     private String nationality;
@@ -10,9 +10,9 @@ public class PlayerModel {
     private int shirtNumber;
     private String team;
 
-
-    public PlayerModel(int id, String name, int age, String nationality, String position, int shirtNumber, String team) {
-        this.id = id;
+    
+    public PlayerModel(String name, int age, String nationality, String position, int shirtNumber, String team) {
+       
         this.name = name;
         this.age = age;
         this.nationality = nationality;
@@ -67,13 +67,5 @@ public class PlayerModel {
 
     public void setTeam(String team) {
         this.team = team;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
