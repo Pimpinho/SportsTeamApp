@@ -4,6 +4,12 @@ from .models import Team, Player
 
 # Register your models here.
 
-admin.site.register(Team)
-admin.site.register(Player)
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ('completeName', 'shortName', 'city', 'stadium', 'coach', 'president', 'foundationYear', 'price')
+
+class PlayerAdmin(admin.ModelAdmin):
+    list_display = ('completeName', 'shirtName', 'birthDate', 'position', 'team', 'price')
+
+admin.site.register(Team, TeamAdmin)
+admin.site.register(Player, PlayerAdmin)
 
