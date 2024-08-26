@@ -1,12 +1,13 @@
 from django.urls import path
-from .views import FinancialView, HomeView, InventoryView, PlayerView, ScheduleView, StatsView, TeamView 
+from .views import home, financial, inventory, team, schedule, stats, player
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
-    path('financial/', FinancialView.as_view(), name='financial'),
-    path('inventory/', InventoryView.as_view(), name='inventory'),
-    path('player/', PlayerView.as_view(), name='player'),
-    path('schedule/', ScheduleView.as_view(), name='schedule'),
-    path('stats/', StatsView.as_view(), name='stats'),
-    path('team/', TeamView.as_view(), name='team'),
+    path('', home, name='home'),
+    path('financial/', financial, name='financial'),
+    path('inventory/', inventory, name='inventory'),
+    path('team/', team, name='team'),
+    path('schedule/', schedule, name='schedule'),
+    path('stats/', stats, name='stats'),
+    path('player/', player, name='player'),
+    
 ]
