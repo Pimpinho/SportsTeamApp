@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from pyexpat.errors import messages
+from django.contrib import messages
+from django.shortcuts import redirect, render
 from .forms import LoginForm, PlayerModelForm
 
 
@@ -28,7 +30,7 @@ def login(request):
     return render(request, 'login.html', {'form': form})
 
 def playerModelForm(request):
-    if(request.method) == 'POST':
+    if request.method == 'POST':
         form = PlayerModelForm(request.POST)
         if form.is_valid():
             player = form.save(commit=False)
@@ -41,15 +43,20 @@ def playerModelForm(request):
             print(f'Descrição da posição: {player.pos_description}')
             print(f'Time: {player.team}')
             print(f'Preço: {player.price}')
+
             messages.success(request, 'Jogador cadastrado com sucesso!')
+            
+            return redirect('playerModelForm')  # Redireciona para a própria página ou outra URL
         else:
             messages.error(request, 'Erro ao cadastrar jogador!')
+            print("deu ruim pae")
+            return render(request, 'playerModelForm.html', {'form': form})
+    
     else:
         form = PlayerModelForm()
-        context = {
-            'form': form
-        }
-        return render(request, 'playerModelForm.html', context)
+    
+    # Retornar a página inicial com o formulário vazio no método GET
+    return render(request, 'playerModelForm.html', {'form': form})
 
 
 

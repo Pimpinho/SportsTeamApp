@@ -1,18 +1,26 @@
 {% load bootstrap4 %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlayerForm</title>
-    {% bootstrap_css %}
-    {% bootstrap_javascript jquery='full' %}
 </head>
 <body>
     <div class="container">
         <h1>Player Form</h1>
         {% bootstrap_messages %}
-        <form action=""
+
+        <form action = "{% url 'playerModelForm' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary"> ADD PLAYER </button>
+            {% endbuttons %}
         </form>
+    </div>
+{% bootstrap_javascript jquery='full' %}
 </body>
 </html>
