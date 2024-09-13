@@ -46,7 +46,7 @@ def playerModelForm(request):
 
             messages.success(request, 'Jogador cadastrado com sucesso!')
             
-            return redirect('playerModelForm')  # Redireciona para a própria página ou outra URL
+            return redirect('player/playerModelForm')  # Redireciona para a própria página ou outra URL
         else:
             messages.error(request, 'Erro ao cadastrar jogador!')
             print("deu ruim pae")

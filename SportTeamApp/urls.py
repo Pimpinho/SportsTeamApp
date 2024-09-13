@@ -10,6 +10,6 @@ urlpatterns = [
     path('stats/', stats, name='stats'),
     path('player/', player, name='player'),
     path('login/', login, name='login'),
-    path('playerModelForm/', playerModelForm, name='playerModelForm'),
+    path('player/playerModelForm/', playerModelForm, name='playerModelForm'),
     
 ]
