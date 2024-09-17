@@ -18,6 +18,28 @@ class PlayerModelForm(forms.ModelForm):
                 'pos_description',
                 'team',
                 'price']
+        
+class TeamModelForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = ['completeName',
+                'shortName',
+                'acronym',
+                'city',
+                'stadium',
+                'coach',
+                'president',
+                'foundationYear',
+                'shield']
+        
+class InventoryModelForm(forms.ModelForm):
+    class Meta:
+        model = Inventory
+        fields = ['product',
+                'description',
+                'quantity',
+                'price']
+        
 
         
     

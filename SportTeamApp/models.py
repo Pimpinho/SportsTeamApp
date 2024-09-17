@@ -25,7 +25,7 @@ class Team(models.Model):
 class Player(models.Model):
     completeName = models.CharField('Nome Completo', max_length=50, unique=True)
     shirtName = models.CharField('Nome da Camisa', max_length=20, null=False)
-    birthDate = models.DateField('Data de Nascimento')
+    birthDate = models.DateField('Data de Nascimento (dd/mm/aaaa)')
     email = models.EmailField('Email', null=True, blank=True)
     AVAILABILITY_CHOICES = [
         ('yes', 'Sim'),
@@ -114,5 +114,3 @@ signals.pre_save.connect(team_pre_save, sender=Team)
 def player_pre_save(signal, instance, sender, **kwargs):
     instance.slug = slugify(instance.completeName)
 signals.pre_save.connect(player_pre_save, sender=Player)
-
-#a

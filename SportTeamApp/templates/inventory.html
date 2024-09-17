@@ -3,41 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Management</title>
+    <title>Football Management - Inventory</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://example.com/soccer-field-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .navbar {
+            background-color: #004d00; /* Verde relacionado a campos de futebol */
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 1.1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00 !important; /* Destaque ao passar o mouse */
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-outline-primary {
+            border-color: white;
+            color: white;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #ffcc00;
+            color: #004d00;
+        }
+
+        .container p {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sports Management</a>
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-futbol"></i> Football Management
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="..">Home</a>
+                        <a class="nav-link" href="/team">
+                            <i class="fas fa-users"></i> Team
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/team">Team</a>
+                        <a class="nav-link" href="/player">
+                            <i class="fas fa-user"></i> Player
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="player">Player</a>
+                        <a class="nav-link" href="/financial">
+                            <i class="fas fa-dollar-sign"></i> Financial
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/financial">Financial</a>
+                        <a class="nav-link" href="/schedule">
+                            <i class="fas fa-calendar-alt"></i> Schedule
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/inventory">Inventory</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/schedule">Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/stats">Stats</a>
+                        <a class="nav-link" href="/stats">
+                            <i class="fas fa-chart-bar"></i> Stats
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -46,12 +111,13 @@
 
     <!-- Main Content -->
     <div class="container mt-5">
-
-        <h1> Inventory </h1>
-        
+        <h1>Inventory</h1>
+        <p>Click <a href="/inventory/inventoryModelForm">here</a> to add a new product to the inventory.</p>
     </div>
 
-    <!-- Bootstrap JS (Optional if you need JavaScript components like toggler) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FontAwesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 </html>
