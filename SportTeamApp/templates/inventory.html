@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,13 +31,29 @@
         }
 
         .navbar-nav .nav-link:hover {
-            color: #ffcc00 !important; /* Destaque ao passar o mouse */
+            color: #ffffff !important; /* Destaque ao passar o mouse */
         }
 
         h1 {
             font-size: 3rem;
             text-align: center;
             margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+            border-radius: 8px;
+            border: 2px solid #ffffff; /* Borda amarela */
+            color: #ffffff; /* Cor do texto */
+        }
+
+        .container p {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+            border-radius: 8px;
+            border: 2px solid #ffffff; /* Borda amarela */
+            color: #ffffff; /* Cor do texto */
         }
 
         .btn-outline-primary {
@@ -46,18 +62,12 @@
         }
 
         .btn-outline-primary:hover {
-            background-color: #ffcc00;
+            background-color: #ffffff;
             color: #004d00;
         }
 
-        .container p {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-top: 30px;
-        }
-
         a {
-            color: #ffcc00;
+            color: #ffffff;
             text-decoration: none;
         }
 
@@ -105,6 +115,17 @@
                         </a>
                     </li>
                 </ul>
+                <div class="ms-auto">
+                    {% if not user.is_authenticated %}
+                        <a class="btn btn-outline-primary" href="/login">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    {% else %}
+                        <a class="btn btn-outline-primary" href="/logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </nav>

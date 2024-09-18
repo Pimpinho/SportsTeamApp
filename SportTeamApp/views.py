@@ -2,6 +2,12 @@ from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from .forms import LoginForm, PlayerModelForm, TeamModelForm, InventoryModelForm
+from .models import Team, Player, Inventory
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as django_login
+from django.contrib.auth import logout as django_logout
 
 
 def home(request):
@@ -11,10 +17,16 @@ def financial(request):
     return render(request, 'financial.html')
 
 def inventory(request):
-    return render(request, 'inventory.html')
+    context = {
+        'produtos': Inventory.objects.all()
+    }
+    return render(request, 'inventory.html', context)
 
 def team(request):
-    return render(request, 'team.html')
+    context = {
+        'teams': Team.objects.all()
+    }
+    return render(request, 'team.html', context)
 
 def schedule(request):
     return render(request, 'schedule.html')
@@ -23,18 +35,35 @@ def stats(request):
     return render(request, 'stats.html')
 
 def player(request):
-    return render(request, 'player.html')
+    context = {
+        'players': Player.objects.all()
+    }
+    return render(request, 'player.html', context)
 
 def login(request):
-    form = LoginForm()
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                django_login(request, user)
+                return redirect('home')  # ou qualquer outra página após o login
+    else:
+        form = AuthenticationForm()
+    
     return render(request, 'login.html', {'form': form})
+
 
 def playerModelForm(request):
     if request.method == 'POST':
         form = PlayerModelForm(request.POST)
         if form.is_valid():
-            player = form.save(commit=False)
+            form.save()
+
             messages.success(request, 'Jogador cadastrado com sucesso!')
+            form = PlayerModelForm()
             
             return redirect('/player/playerModelForm')  # Redireciona para a própria página ou outra URL
         else:
@@ -51,8 +80,10 @@ def teamModelForm(request):
     if request.method == 'POST':
         form = TeamModelForm(request.POST, request.FILES)
         if form.is_valid():
-            team = form.save(commit=False)
+            form.save()
+
             messages.success(request, 'Time cadastrado com sucesso!')
+            team = TeamModelForm()
             
             return redirect('/team/teamModelForm')  # Redireciona para a própria página ou outra URL
         else:
@@ -69,7 +100,7 @@ def inventoryModelForm(request):
     if request.method == 'POST':
         form = InventoryModelForm(request.POST)
         if form.is_valid():
-            inventory = form.save(commit=False)
+            form.save()
             messages.success(request, 'Produto cadastrado com sucesso!')
             
             return redirect('/inventory/inventoryModelForm')  # Redireciona para a própria página ou outra URL

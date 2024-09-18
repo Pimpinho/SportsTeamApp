@@ -40,6 +40,10 @@ class InventoryModelForm(forms.ModelForm):
                 'quantity',
                 'price']
         
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nome de Usuário', max_length=50)
+    password = forms.CharField(label='Senha', max_length=50, widget=forms.PasswordInput)
+        
 
         
     

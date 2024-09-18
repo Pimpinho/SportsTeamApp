@@ -1,42 +1,94 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Management</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #004d00; /* Cor de fundo verde */
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: #004d00; /* Manter o verde da barra de navegação */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 1.1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00 !important; /* Amarelo no hover */
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 100px; /* Ajustar margem para que não fique escondido pela barra de navegação */
+        }
+
+        .btn-outline-primary {
+            border-color: white;
+            color: white;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #ffcc00;
+            color: #004d00;
+        }
+
+        .form-label {
+            color: #004d00; /* Verde para labels */
+        }
+
+        .form-control {
+            background-color: #002d00; /* Fundo verde escuro para inputs */
+            color: #fff; /* Texto branco nos inputs */
+            border: 1px solid #004d00; /* Borda verde para inputs */
+        }
+
+        .form-control:focus {
+            border-color: #ffcc00; /* Amarelo no foco */
+            box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.25); /* Sombra amarela no foco */
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            flex-grow: 1;
+        }
+    </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Sports Management</a>
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-futbol"></i> Football Management
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/team">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/player">Player</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/financial">Financial</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/inventory">Inventory</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/schedule">Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/stats">Stats</a>
-                    </li>
-                </ul>
+            
             </div>
         </div>
     </nav>
@@ -45,10 +97,21 @@
     <div class="container mt-5">
 
         <h1>Login</h1>
-        
+        {% bootstrap_messages %}
+
+        <form action="{% url 'login' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
     </div>
 
-    <!-- Bootstrap JS (Optional if you need JavaScript components like toggler) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    {% bootstrap_javascript jquery='full' %}
+    <!-- FontAwesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 </html>
