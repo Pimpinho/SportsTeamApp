@@ -43,8 +43,99 @@ class Player(models.Model):
     team = models.ForeignKey(Team, on_delete=models.SET_DEFAULT, null=True, blank=True, default=get_default_team)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     slug = models.SlugField('Slug', max_length=100, blank=True, editable=False)
+
     def __str__(self):
         return self.shirtName
+
+    # Método para salvar o estado em um Memento
+    def save_state(self):
+        return PlayerMemento(
+            self.completeName,
+            self.shirtName,
+            self.birthDate,
+            self.email,
+            self.availability,
+            self.position,
+            self.pos_description,
+            self.team,
+            self.price,
+            self.slug
+        )
+
+    # Método para restaurar o estado a partir de um Memento
+    def restore_state(self, memento):
+        state = memento.get_state()
+        self.completeName = state['complete_name']
+        self.shirtName = state['shirt_name']
+        self.birthDate = state['birth_date']
+        self.email = state['email']
+        self.availability = state['availability']
+        self.position = state['position']
+        self.pos_description = state['pos_description']
+        self.team = state['team']
+        self.price = state['price']
+        self.slug = state['slug']
+        self.save()  # Salva o estado restaurado no banco de dados
+
+# managers.py
+
+class PlayerManager:
+    def __init__(self, player):
+        self.player = player
+        self.history = []
+
+    def save(self):
+        memento = self.player.save_state()
+        self.history.append(memento)
+
+    def undo(self):
+        if not self.history:
+            return  # Nenhum estado salvo
+        memento = self.history.pop()
+        self.player.restore_state(memento)
+
+class PlayerMemento:
+    def __init__(self, complete_name, shirt_name, birth_date, email, availability, position, pos_description, team, price, slug):
+        self._complete_name = complete_name
+        self._shirt_name = shirt_name
+        self._birth_date = birth_date
+        self._email = email
+        self._availability = availability
+        self._position = position
+        self._pos_description = pos_description
+        self._team = team
+        self._price = price
+        self._slug = slug
+        
+    def get_state(self):
+        return {
+            'complete_name': self._complete_name,
+            'shirt_name': self._shirt_name,
+            'birth_date': self._birth_date,
+            'email': self._email,
+            'availability': self._availability,
+            'position': self._position,
+            'pos_description': self._pos_description,
+            'team': self._team,
+            'price': self._price,
+            'slug': self._slug
+        }
+
+class PlayerManager:
+    def __init__(self, player):
+        self.player = player
+        self.history = []
+
+    def save(self):
+        memento = self.player.save_state()
+        self.history.append(memento)
+
+    def undo(self):
+        if not self.history:
+            return  # Nenhum estado salvo
+        memento = self.history.pop()
+        self.player.restore_state(memento)
+
 
 class Match(models.Model):
     date = models.DateField()
@@ -107,6 +198,8 @@ class Inventory(models.Model):
     
     def __str__(self):
         return self.product
+    
+
 def team_pre_save(signal, instance, sender, **kwargs):
         instance.slug = slugify(instance.completeName)
 signals.pre_save.connect(team_pre_save, sender=Team)

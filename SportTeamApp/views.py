@@ -1,13 +1,16 @@
 from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import redirect, render
-from .forms import LoginForm, PlayerModelForm, TeamModelForm, InventoryModelForm
+from .forms import LoginForm, PlayerModelForm, TeamModelForm, InventoryModelForm, MatchModelForm, TournmentModelForm, TrainingModelForm
 from .models import Team, Player, Inventory
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
+
+
+from django.http import JsonResponse
 
 
 def home(request):
@@ -113,6 +116,84 @@ def inventoryModelForm(request):
     
     # Retornar a página inicial com o formulário vazio no método GET
     return render(request, 'inventoryModelForm.html', {'form': form})
+
+def matchModelForm(request):
+    if request.method == 'POST':
+        form = MatchModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Partida cadastrada com sucesso!')
+            
+            return redirect('/schedule/matchModelForm')  # Redireciona para a própria página ou outra URL
+        else:
+            messages.error(request, 'Erro ao cadastrar partida!')
+            return render(request, 'matchModelForm.html', {'form': form})
+    
+    else:
+        form = MatchModelForm()
+    
+    # Retornar a página inicial com o formulário vazio no método GET
+    return render(request, 'matchModelForm.html', {'form': form})
+
+def tournmentModelForm(request):
+    if request.method == 'POST':
+        form = TournmentModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Torneio cadastrado com sucesso!')
+            
+            return redirect('/schedule/tournmentModelForm')  # Redireciona para a própria página ou outra URL
+        else:
+            messages.error(request, 'Erro ao cadastrar torneio!')
+            return render(request, 'tournmentModelForm.html', {'form': form})
+    
+    else:
+        form = TournmentModelForm()
+    
+    # Retornar a página inicial com o formulário vazio no método GET
+    return render(request, 'tournmentModelForm.html', {'form': form})
+
+def trainingModelForm(request):
+    if request.method == 'POST':
+        form = TrainingModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Treino cadastrado com sucesso!')
+            
+            return redirect('/schedule/trainingModelForm')  # Redireciona para a própria página ou outra URL
+        else:
+            messages.error(request, 'Erro ao cadastrar treino!')
+            return render(request, 'trainingModelForm.html', {'form': form})
+    
+    else:
+        form = TrainingModelForm()
+    
+    # Retornar a página inicial com o formulário vazio no método GET
+    return render(request, 'trainingModelForm.html', {'form': form})
+
+
+from .proxies import InventoryProxy
+
+def inventory_detail(request, inventory_id):
+    # Instancia o proxy para o item do inventário
+    inventory_proxy = InventoryProxy(inventory_id)
+
+    # Obtém as informações do inventário
+    product = inventory_proxy.get_product()
+    description = inventory_proxy.get_description()
+    quantity = inventory_proxy.get_quantity()
+    price = inventory_proxy.get_price()
+    total_value = inventory_proxy.get_total_value()
+
+    return JsonResponse({
+        "product": product,
+        "description": description,
+        "quantity": quantity,
+        "price": str(price),
+        "total_value": str(total_value)
+    })
+
+
 
 
 
